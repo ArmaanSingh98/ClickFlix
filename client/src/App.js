@@ -10,6 +10,7 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import Search from './components/Search'
 
 import './App.css';
 
@@ -17,11 +18,11 @@ import './App.css';
 function Navigation(props) {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
-      <Link className="navbar-brand" to="/">Micro Blog</Link>
+      <Link className="navbar-brand" to="/">ClickFlix</Link>
       <ul className="navbar-nav mr-auto">
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/posts/new">
-            Create a Micro Post
+            Find the Movie you're looking for!
           </NavLink>
         </li>
         <li className="nav-item">
@@ -40,7 +41,8 @@ class App extends React.Component {
     return (
         <Router>
           <Navigation />
-          <div className="container-fluid text-center">
+          <Search />
+          {/* <div className="container-fluid text-center">
             <div className="row justify-content-center">
               <Switch>
                 <Route path="/posts/new" component={PostFormPage} />
@@ -49,7 +51,7 @@ class App extends React.Component {
                 <Route path="/" component={PostsListPage} />
               </Switch>
             </div>
-          </div>
+          </div> */}
         </Router>
     );
   }
