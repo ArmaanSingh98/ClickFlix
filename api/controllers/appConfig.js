@@ -3,10 +3,9 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   res.json({
-    title: 'APP TITLE',
-    description: 'A short description about this app',
+    title: 'ClickFlix',
+    description: 'Find out where to watch your favorite films!',
   });
 });
-
 
 module.exports = router;
