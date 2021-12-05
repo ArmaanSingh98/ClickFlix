@@ -6,6 +6,9 @@ const app = express();
 const PORT = process.env.PORT;
 const API_KEY = process.env.API_KEY
 const https = require('https');
+var cors = require('cors');
+app.use(cors());
+
 
 // this lets us parse 'application/json' content in http requests
 app.use(express.json());
