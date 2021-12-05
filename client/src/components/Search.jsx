@@ -1,33 +1,20 @@
 import React from 'react'
 import {useState} from 'react'
+import SlideShow from './SlidesShow';
+import { Redirect } from 'react-router-dom';
 
 function Search() {
 
-    // constructor(props){
-    //     super(props);
-    //     this.state = {value: ''};
-
-    //     this.handleChange = this.handleChange.bind(this);
-    //     this.handleSubmit = this.handleSubmit.bind(this);
-    // }
-    // handleChange(event) {
-    //     this.setState({value : event.target.value});
-    // }
-
-    // handleSubmit(event) {
-    //     alert('A name was submitted: ' + this.state.value);
-    //     event.preventDefault();
-    //   }
-
-
     const [value, setValue] = useState('');
+    const [movies, setMovies] = useState([]);
 
     const handleSubmit = () => { 
         fetch('http://localhost:8080/search/keyword/' + value)
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => setMovies(data))
     }
 
+    console.log(movies)
 
     return (
         <div className="row-center">
@@ -39,7 +26,7 @@ function Search() {
                     <button type="button" class="btn btn-outline-primary" onClick = {handleSubmit}  >search</button>
                 </div>
             </div>
-
+            <SlideShow movieList={movies}/>
         </div>
        
     )

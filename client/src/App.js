@@ -11,8 +11,9 @@ import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
 import Search from './components/Search'
+import 'bootstrap/dist/css/bootstrap.css';
 
-import './App.css';
+//import '../public/styles.css'
 
 
 function Navigation(props) {
