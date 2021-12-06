@@ -6,15 +6,25 @@ import { Redirect } from 'react-router-dom';
 function Search() {
 
     const [value, setValue] = useState('');
-    const [movies, setMovies] = useState([]);
+    const [list, setList] = useState([]);
+    const [type, setType] = useState('movies')
 
     const handleSubmit = () => { 
+        setList([])
+        setType('movies')
         fetch('http://localhost:8080/search/keyword/' + value)
             .then(response => response.json())
-            .then(data => setMovies(data))
+            .then(data => setList(data))
     }
 
-    console.log(movies)
+    const handleMovieSelection = (movieid) => {
+        fetch('http://localhost:8080/search/movie/' + movieid)
+            .then(response => response.json())
+            .then(data => {
+                setType('providers')
+                setList(data)
+            })
+    }
 
     return (
         <div className="row-center">
@@ -26,7 +36,7 @@ function Search() {
                     <button type="button" class="btn btn-outline-primary" onClick = {handleSubmit}  >search</button>
                 </div>
             </div>
-            <SlideShow movieList={movies}/>
+            <SlideShow pickMovie={handleMovieSelection} list={list}  type={type}/>
         </div>
        
     )

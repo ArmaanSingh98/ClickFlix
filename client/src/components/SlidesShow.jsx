@@ -1,8 +1,8 @@
 import React from "react";
 import Carousel from "react-elastic-carousel";
-import Item from "./Item";
 import Card from "./Card"
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const breakPoints = [
   { width: 1, itemsToShow: 1 },
@@ -12,6 +12,11 @@ const breakPoints = [
 ];
 
 function SlideShow(props) {
+
+    const selectMovie = (movieid) => {
+        props.pickMovie(movieid)
+    }
+
     const myStyle={
         fontFamily: "sans-serif",
         display: "flex",
@@ -19,14 +24,13 @@ function SlideShow(props) {
         justifyContent: "center",
         height: "10vh",
         textAlign: "center"
-      }
-      console.log(props.movieList)
-  return (
+      }  
+    return (
     <>
-      <h1 style={myStyle}>Movies</h1>
+      <h1 style={myStyle}>{props.type}</h1>
       <div className="App">
         <Carousel breakPoints={breakPoints}>
-            {props.movieList.map((movie) => <Card movie={movie} key={movie.id} />)}
+            {props.list.map(listItem => <Card type={props.type} pickMovie={selectMovie} listItem={listItem} key={listItem.id === null ? listItem.provider_id : listItem.id} />)}
         </Carousel>
       </div>
     </>
@@ -36,3 +40,9 @@ function SlideShow(props) {
 export default SlideShow 
 
 
+// {
+//     "display_priority": 8,
+//     "logo_path": "/aS2zvJWn9mwiCOeaaCkIh4wleZS.jpg",
+//     "provider_id": 384,
+//     "provider_name": "HBO Max"
+// }
