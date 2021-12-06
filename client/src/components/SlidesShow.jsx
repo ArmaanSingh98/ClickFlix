@@ -26,11 +26,13 @@ function SlideShow(props) {
       <h1 style={myStyle}>Movies</h1>
       <div className="App">
         <Carousel breakPoints={breakPoints}>
-            {props.movieList.map((movie) => <Card movie={movie}/>)}
+            {props.movieList.map((movie) => <Card movie={movie} key={movie.id} />)}
         </Carousel>
       </div>
     </>
   );
 }
 
-export default SlideShow
+export default SlideShow 
+
+
