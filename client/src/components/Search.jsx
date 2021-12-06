@@ -1,7 +1,9 @@
 import React from 'react'
 import {useState} from 'react'
 import SlideShow from './SlidesShow';
-import { Redirect } from 'react-router-dom';
+import NoResults from './NoResults';
+//import { Redirect } from 'react-router-dom';
+import '../App.css'
 
 function Search() {
 
@@ -21,22 +23,24 @@ function Search() {
         fetch('http://localhost:8080/search/movie/' + movieid)
             .then(response => response.json())
             .then(data => {
-                setType('providers')
-                setList(data)
+                if (data !== 'none') {
+                    setType('providers')
+                    setList(data)
+                }
             })
     }
 
     return (
-        <div className="row-center">
-            <h3>Search for your favorite movie</h3>
+        <div className="row-center darkColor">
+            <h3 className="searchQuote">Search for your favorite movie</h3>
             <div className="row col-md-12 ml-md-auto">
-                <div className="input-group col-md-6">
+                <div className="input-group col-md-6 searchDiv">
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                     aria-describedby="search-addon" value = {value} onChange ={(event) => setValue(event.target.value)} />
-                    <button type="button" class="btn btn-outline-primary" onClick = {handleSubmit}  >search</button>
+                    <button type="button" class="btn btn-outline-warning btn-dark" onClick = {handleSubmit}  >search</button>
                 </div>
             </div>
-            <SlideShow pickMovie={handleMovieSelection} list={list}  type={type}/>
+            {list.length === 0 || <SlideShow pickMovie={handleMovieSelection} list={list}  type={type}/>}
         </div>
        
     )

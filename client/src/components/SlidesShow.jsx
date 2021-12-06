@@ -27,9 +27,9 @@ function SlideShow(props) {
       }  
     return (
     <>
-      <h1 style={myStyle}>{props.type}</h1>
+      <b style={myStyle}></b>
       <div className="App">
-        <Carousel breakPoints={breakPoints}>
+        <Carousel className="carousel" breakPoints={breakPoints}>
             {props.list.map(listItem => <Card type={props.type} pickMovie={selectMovie} listItem={listItem} key={listItem.id === null ? listItem.provider_id : listItem.id} />)}
         </Carousel>
       </div>

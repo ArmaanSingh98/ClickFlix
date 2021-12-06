@@ -1,0 +1,63 @@
+.App-header {
+  background-color: #082032;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+
+.App {
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #082032;
+  color: white;
+}
+
+.darkColor {
+  background-color: #082032;
+  color: #F0A500;
+  position: relative;
+  bottom: 16px;
+}
+
+.searchQuote {
+  background-color: #082032;
+  color: #F0A500;
+  margin-left: 40px;
+  margin-top: 10px;
+  padding-top: 50px;
+  padding-bottom: 10px;
+  margin-bottom: 0;
+  position: relative;
+  left: 630px;
+}
+
+
+.cardColor {
+  background-color: #334756;
+  color: #F0A500;
+}
+
+
+.searchDiv {
+  width: 1000px;
+  position: relative;
+  left: 400px
+}
+
+
+.carousel {
+  position:  relative;
+  bottom: 100px;
+}
