@@ -24,6 +24,7 @@ function Search() {
             .then(response => response.json())
             .then(data => {
                 if (data !== 'none') {
+                    console.log(data)
                     setType('providers')
                     setList(data)
                 }
