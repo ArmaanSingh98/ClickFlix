@@ -10,6 +10,7 @@ import PostsListPage from './pages/PostsListPage';
 import PostFormPage from './pages/PostFormPage';
 import ShowPostPage from './pages/ShowPostPage';
 import AboutUsPage from './pages/AboutUsPage';
+import TVSearch from './components/TVSearch'
 import Search from './components/Search'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
@@ -27,8 +28,8 @@ function Navigation(props) {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" exact to="/about-us">
-            About Us
+          <NavLink className="nav-link" exact to="/TV-Search">
+            Now Search TV Shows
           </NavLink>
         </li>
       </ul>
@@ -53,6 +54,10 @@ class App extends React.Component {
               </Switch>
             </div>
           </div> */}
+          <TVSearch />
+          {
+            
+          }
         </Router>
     );
   }

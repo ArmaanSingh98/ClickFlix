@@ -65,10 +65,51 @@ app.get('/search/movie/:movieid', (req, res) => {
 
     // The whole response has been received. Print out the result.
     response.on('end', () => {
-      res.send(JSON.parse(data).results.US.flatrate);
+      res.send(JSON.parse(data).results.US.flatrate || []);
     });
   }).on("error", (err) => { console.log("Error: " + err.message); });
 })
+
+app.get('/search/tv/keyword/:keyword', (req, res) => {
+
+  https.get('https://api.themoviedb.org/3/search/tv?'+'api_key='+API_KEY+'&language=en-US&page=1&include_adult=false&query='+req.params.keyword, (response) => {
+    let data = '';
+
+    // A chunk of data has been received.
+    response.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    // The whole response has been received. Print out the result.
+    response.on('end', () => {
+      //console.log(data)
+      res.send(JSON.parse(data).results);
+      //console.log(data).tvid
+    });
+  }).on("error", (err) => { console.log("Error: " + err.message); });
+})
+
+app.get('/search/tv/:tvid', (req, res) => {
+
+  https.get('https://api.themoviedb.org/3/tv/'+req.params.tvid+'/watch/providers?api_key='+API_KEY, (response) => {
+    let data = '';
+
+    // A chunk of data has been received.
+    response.on('data', (chunk) => {
+      data += chunk;
+    });
+
+    
+
+    // The whole response has been received. Print out the result.
+    response.on('end', () => {
+      console.log(data)
+      res.send(JSON.parse(data).results.US.flatrate || []);
+
+    });
+  }).on("error", (err) => { console.log("Error: " + err.message); });
+})
+
 
 // start up the server
 if(PORT) {
