@@ -65,7 +65,7 @@ app.get('/search/movie/:movieid', (req, res) => {
 
     // The whole response has been received. Print out the result.
     response.on('end', () => {
-      res.send(JSON.parse(data).results.US.flatrate || []);
+      res.send(JSON.parse(data).results?.US.flatrate || []);
     });
   }).on("error", (err) => { console.log("Error: " + err.message); });
 })
@@ -104,7 +104,7 @@ app.get('/search/tv/:tvid', (req, res) => {
     // The whole response has been received. Print out the result.
     response.on('end', () => {
       console.log(data)
-      res.send(JSON.parse(data).results.US.flatrate || []);
+      res.send(JSON.parse(data).results?.US.flatrate || []);
 
     });
   }).on("error", (err) => { console.log("Error: " + err.message); });
